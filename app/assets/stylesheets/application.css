@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+.interest-text {
+  color: #A9A9A9;
+  size: 9px;
+  margin-left: 25px;
+}
+
+.generate-buttons {
+  display: flex;
+  justify-content: flex-end
+}
+
+.generate-buttons > button{
+  margin-right: 10px;
+}
+
+.input-amount {
+  width: 40%;
+}
+
+.projection-thead > tr > th {
+  vertical-align: middle
+}

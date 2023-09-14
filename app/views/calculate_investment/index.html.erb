@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row align-items-start">
+    <div class="col-md-6 offset-md-3">
+      <h3 class="mt-3 mb-3">Get your projections!</h3>
+
+      <%= form_with url: "/calculate", method: :post, id: "calculate-projection-form" do |form| %>
+        <div class="input-group input-group-lg mb-3">
+          <span class="form-control"><%= form.number_field :amount, class: "form-control", placeholder: "Amount to project" %> </span>
+          <span class="input-group-text">$</span>
+          <%= form.submit "Calculate", id: "submit-btn", class: "btn btn-primary btn-lg" %>
+        </div>
+      <% end %>
+
+      <div class="card mt-3">
+        <div class="card-body">
+          <table class="table">
+            <thead class = "projection-thead">
+              <tr>
+                <th scope="col">Month</th>
+                <th scope="col">
+                  <div>
+                    <img src="https://cdn.svgporn.com/logos/bitcoin.svg" width="20" height="20" />
+                    <%= btc_data[:symbol] %> - <%= btc_data[:price_usd] %> USD
+                  </div>
+                  <label class = "interest-text"><%= (ProjectionService::BTC_INSTEREST_PERCENTAGE * 100).to_i %>% interest</label>
+                </th>
+                <th scope="col">
+                  <div>
+                    <img src="https://cdn.svgporn.com/logos/ethereum.svg" width="20" height="20" />
+                    <%= eth_data[:symbol] %> - <%= eth_data[:price_usd] %> USD
+                  </div>
+                  <label class = "interest-text"><%= (ProjectionService::ETH_INSTEREST_PERCENTAGE * 100).to_i %>% interest</label>
+                </th>
+                <th scope="col">
+                  <div>
+                    <img src="https://cdn.svgporn.com/logos/cardano-icon.svg" width="20" height="20" />
+                    <%= ada_data[:symbol] %> - <%= ada_data[:price_usd] %> USD
+                  </div>
+                  <label class = "interest-text"><%= (ProjectionService::ADA_INSTEREST_PERCENTAGE * 100).to_i %>% interest</label>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class = "generate-buttons mt-3">
+        <%= button_tag "Generate CSV", id: "print-csv-button", class: "btn btn-dark mr-1",
+                                       data: {
+                                         btc_data: {symbol: btc_data[:symbol], price: btc_data[:price_usd]},
+                                         eth_data: {symbol: eth_data[:symbol], price: eth_data[:price_usd]},
+                                         ada_data: {symbol: ada_data[:symbol], price: ada_data[:price_usd]}
+                                       } %>
+
+        <%= link_to "Generar JSON", projection_path(amount: 0), class: "btn btn-secondary", id: "print-json-button", target: "_blank"%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag "calculate_investment.js" %>
