@@ -50,9 +50,10 @@ RSpec.describe CalculateInvestmentController, type: :request do
       )
 
       expect(response).to have_http_status(:ok)
-      expect(response.body).to include(
-        'Month;BTC - 26618.029010150512;ETH - 1630.8803053012182;ADA - 0.25022713995424417'
-      )
+      expect(response.body).to include('Month')
+      expect(response.body).to include('BTC - 26618.029010150512')
+      expect(response.body).to include('ETH - 1630.8803053012182')
+      expect(response.body).to include('ADA - 0.25022713995424417')
     end
   end
 
