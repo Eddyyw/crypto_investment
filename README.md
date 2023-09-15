@@ -3,8 +3,7 @@
 ## Requirements
 * Ruby 3.0.6
 * Rails 6.1.7.6
-* Yarn 1.22.10
-* Postgresql 12.12
+* Postgresql 15
 
 ## Instalation instructions
 
