@@ -1,24 +1,30 @@
-# README
+# Crypto investment
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
+* Ruby 3.0.6
+* Rails 6.1.7.6
+* Yarn 1.22.10
+* Postgresql 12.12
 
-Things you may want to cover:
+## Instalation instructions
 
-* Ruby version
+### Clone repository
+```bash
+git clone git@github.com:Eddyyw/crypto_investment.git
+```
 
-* System dependencies
+### Install gems
+```bash
+bundle install
+```
 
-* Configuration
+## Starting the application
+```bash
+bin/rails s # will start rails server
+```
 
-* Database creation
+## Starting a console
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+bin/rails console
+```
